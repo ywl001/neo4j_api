@@ -1,9 +1,12 @@
 FROM neo4j:5.20
 
-ENV NEO4J_AUTH=neo4j/test1234 \
-    NEO4J_dbms_connector_bolt_advertised__address=:7687 \
-    NEO4J_dbms_connector_http_advertised__address=:7474 \
-    NEO4J_dbms_default__database=neo4j
+# 设置默认用户名密码
+ENV NEO4J_AUTH=neo4j/test1234
 
-EXPOSE 7474
+# 暴露端口（微信云托管要求）
+EXPOSE 7474 7687
+
+# 默认命令
+CMD ["neo4j"]
+
 
